@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app-gateway:
+    container_name: app-gateway
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+  web-ui-app:
+    container_name: web-ui-app
+    build:
+      context: ./web-ui
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
